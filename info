@@ -1,3 +1,12 @@
+1. Thinking in react
+2. 1 + модули es6 + webpack + index.js
+3. 2 + сомодельный flux
+4. 3 + простейший набор redux
+5. 4 + devtools
+6. 5 + middleware
+7. 6 + socket.io
+
+
 //Thinking in react
 
 1. Обвести все области/подобласти в макете по принципам единой ответственности и применяя декомпозицию
@@ -16,92 +25,22 @@
 ------ ProductCategoryRow
 ------ ProductRow
 
-4. Написать статическую версию реакт приложения (компоненты снизу вверх)
+4. Написать статическую версию реакт приложения 
+- компоненты должны содержать только метод render()
+- верхний родительский компонент получит модель данных в качестве свойства (props)
+- если внести изменения в базовую модель данных и вызвать ReactDOM.render() заново - UI обновится
+- React - предоставляет однопоточный процесс обновления данных
 
-class ProductCategoryRow extends React.Component {
-  render() {
-    return <tr><th colSpan="2">{this.props.category}</th></tr>;
-  }
-}
+5. Отличия props от state
+props - способ передачи ранных от родительского компонента в дочерний
+state - зарезервирован для интерактивности - для данных, которые меняются с течением времени
+https://facebook.github.io/react/docs/state-and-lifecycle.html
 
-class ProductRow extends React.Component {
-  render() {
-    var name = this.props.product.stocked ?
-      this.props.product.name :
-      <span style={{color: 'red'}}>
-        {this.props.product.name}
-      </span>;
-    return (
-      <tr>
-        <td>{name}</td>
-        <td>{this.props.product.price}</td>
-      </tr>
-    );
-  }
-}
+6. Способы построения
+top-down - Сверху вниз - начать с разработки компонента всего приложения - для простых приложений
+bottom-up - Снизу вверх - начать с компонентов, которые находятся внутри родительского компонента - для сложных приложений
 
-class ProductTable extends React.Component {
-  render() {
-    var rows = [];
-    var lastCategory = null;
-    this.props.products.forEach(function(product) {
-      if (product.category !== lastCategory) {
-        rows.push(<ProductCategoryRow category={product.category} key={product.category} />);
-      }
-      rows.push(<ProductRow product={product} key={product.name} />);
-      lastCategory = product.category;
-    });
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
-    );
-  }
-}
-
-class SearchBar extends React.Component {
-  render() {
-    return (
-      <form>
-        <input type="text" placeholder="Search..." />
-        <p>
-          <input type="checkbox" />
-          {' '}
-          Only show products in stock
-        </p>
-      </form>
-    );
-  }
-}
-
-class FilterableProductTable extends React.Component {
-  render() {
-    return (
-      <div>
-        <SearchBar />
-        <ProductTable products={this.props.products} />
-      </div>
-    );
-  }
-}
-
-
-var PRODUCTS = [
-  {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
-  {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
-  {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
-  {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
-  {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
-  {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
-];
- 
-ReactDOM.render(
-  <FilterableProductTable products={PRODUCTS} />,
-  document.getElementById('container')
-);
+TODO
+- законспектировать статью про state
+- Добавить минимальный список state
+- 
