@@ -137,7 +137,7 @@ ReactDOM.render(
 - Если не можете найти компонент, в котором есть смысл хранить state, просто создайте новый компонент только для хранения state и поместите его куда-нибудь выше по иерархии.
 
 ИТАК:
-- ProductTable должен фильтровать список продуктов основанный на state, а SearchBar должен отображать search text and checked state.
+- ProductTable должен фильтровать список продуктов основанный на state, а SearchBar должен отображать search text и checked state.
 - Их общий владелец - FilterableProductTable
 - Это концептуально осмысленно поместить state для filter text и checked value в FilterableProductTable
 
