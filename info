@@ -1,5 +1,5 @@
 1. Thinking in react - пример простого приложения на react (1-thinking-in-react)
-2. 1 + модули es6 + webpack + index.js
+2. 1 + npm модули + es6 + webpack + index.js
 3. 2 + сомодельный flux
 4. 3 + простейший набор redux
 5. 4 + devtools
