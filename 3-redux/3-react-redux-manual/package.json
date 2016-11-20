@@ -1,0 +1,16 @@
+{
+  "name": "redux-test",
+  "description": "redux test",
+  "version": "0.0.1",
+  "main": "index.js",
+  "dependencies": {
+    "babel-core": "~5.1.10",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "babel-loader": "~5.0.0",
+    "install": "^0.8.2",
+    "lodash": "^4.3.0",
+    "redux": "^3.6.0",
+    "webpack": "^1.13.3"
+  }
+}
